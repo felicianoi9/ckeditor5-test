@@ -6,12 +6,12 @@ const { styles } = require( '@ckeditor/ckeditor5-dev-utils' );
 
 module.exports = {
     // https://webpack.js.org/configuration/entry-context/
-    entry: './index.js',
+    entry: './src/app.js',
 
     // https://webpack.js.org/configuration/output/
     output: {
         path: path.resolve( __dirname, 'dist' ),
-        filename: 'bundle.js'
+        filename: 'ckeditor.js'
     },
 
     module: {
@@ -39,6 +39,30 @@ module.exports = {
                     }
                 ] 
             },
+            {
+                test: /glossary[/\\]theme[/\\].+\.css$/, 
+                use: [
+                    {
+                        loader: 'style-loader',
+                        options: {
+                            injectType: 'singletonStyleTag',
+                            attributes: {
+                                'data-cke': true
+                            }
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: styles.getPostCssConfig( {
+                            themeImporter: {
+                                themePath: require.resolve( '@ckeditor/ckeditor5-theme-lark' )
+                            },
+                            minify: true
+                        } )
+                    }
+                ] 
+            },
+           
             {
                 test: /ckeditor5-[^/\\]+[/\\]theme[/\\]icons[/\\][^/\\]+\.svg$/,
 

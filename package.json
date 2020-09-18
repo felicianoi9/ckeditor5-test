@@ -31,6 +31,7 @@
     "@ckeditor/ckeditor5-ui": "^22.0.0",
     "@ckeditor/ckeditor5-utils": "^22.0.0",
     "@ckeditor/ckeditor5-widget": "^22.0.0",
+    "jquery": "^3.5.1",
     "postcss-loader": "^3.0.0",
     "raw-loader": "^3.1.0",
     "style-loader": "^1.2.1",
