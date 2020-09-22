@@ -11,15 +11,28 @@ export default class InsertGlossary extends Command {
 
             let t = '';
 
+            
+            let countItems = 0;
+
             for (const item of range.getItems()) {
                 t = t + item.data;
+                countItems++;
             }
-                
-            $('input[name=ck_term]').val(t);
-            $('input[name=ck_desc]').focus();
 
+            console.log(countItems);
+
+            if ( countItems > 0 ) {
+                $('input[name=ck_term]').val(t);
+                $('input[name=ck_desc]').focus();
+            } else {
+                $('input[name=ck_term]').focus();
+            }         
+        
             $('.btn-ckeditor-glossary').on('click', function(){                       
                 let ck_desc = $('input[name=ck_desc]').val();
+                if ( countItems == 0) {
+                    t =  $('input[name=ck_term]').val();
+                }
 
                 self.editor.model.change( writer => {
                     self.editor.model.insertContent( createGlossary( writer, t, ck_desc ) );
@@ -28,10 +41,15 @@ export default class InsertGlossary extends Command {
                     // in a way that will result in creating a valid model structure.
                     // this.editor.model.insertContent( createGlossary( writer, ck_term, ck_desc ) );
                 } );
+
                 
+                ck_desc = '';
           
                 $('.ckModal').modal('hide');
-            })
+            });
+            
+           
+            countItems = 0;
            
         }).modal();
     }
