@@ -58,36 +58,30 @@
         </textarea>
     
     </div>
+    
 
     <!-- Modals -->
 
     <div class="modal fade ckModal" id="ckModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Glossary</h5>
-            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button> -->
-            </div>
+            
             <div class="modal-body">
             
                 <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Term:</label>
-                    <input type="text" name="ck_term" class="form-control ck_term" id="ck_term">
+                    <input type="text" name="ck_term" class="form-control ck_term" id="ck_term" >
                 </div>
                 <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Description:</label>
                     <input type="text" name="ck_desc" class="form-control" id="descriptionCk">
                 </div>
+                <button type="button" class="btn btn-secondary right" data-dismiss="modal">cancel</button>
+                <button type="button" class="btn btn-primary btn-ckeditor-glossary">Create Tooltip</button>
                 
             
             </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary btn-ckeditor-glossary">Send message</button>
             
-            </div>
         </div>
         </div>
     </div>
