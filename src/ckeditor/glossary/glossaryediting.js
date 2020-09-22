@@ -63,7 +63,7 @@ export default class GlossaryEditing extends Plugin {
                 // Note: You use a more specialized createEditableElement() method here.
                 const div = viewWriter.createEditableElement( 'div', { class: 'tooltipCk' } );
 
-                return toWidget( div, viewWriter );
+                return toWidgetEditable( div, viewWriter );
             }
         } );
 
@@ -97,7 +97,7 @@ export default class GlossaryEditing extends Plugin {
                 // Note: You use a more specialized createEditableElement() method here.
                 const span= viewWriter.createEditableElement( 'span', { class: 'tooltiptextCk' } );
 
-                return toWidget( span, viewWriter );
+                return toWidgetEditable( span, viewWriter );
             }
         } );
 

@@ -3,29 +3,37 @@ import Command from '@ckeditor/ckeditor5-core/src/command';
 export default class InsertGlossary extends Command {
     
     execute() {
-        this.editor.model.change( writer => {
+        const self = this;
 
-            const selection = editor.model.document.selection;
+        $('.ckModal').on('shown.bs.modal', function() {
+            const selection = self.editor.model.document.selection;
             const range = selection.getFirstRange();
 
             let t = '';
 
             for (const item of range.getItems()) {
                 t = t + item.data;
+            }
                 
-            }  
-            console.log(t);
+            $('input[name=ck_term]').val(t);
+            $('input[name=ck_desc]').focus();
 
-            let ck_term = t;
+            $('.btn-ckeditor-glossary').on('click', function(){                       
+                let ck_desc = $('input[name=ck_desc]').val();
 
-            let ck_desc = '';
-
-            ck_desc  = prompt("Descrição:");  
-
-            // Insert <glossaryTooltip>*</glossaryTooltip> at the current selection position
-            // in a way that will result in creating a valid model structure.
-            this.editor.model.insertContent( createGlossary( writer, ck_term, ck_desc ) );
-        } );
+                self.editor.model.change( writer => {
+                    self.editor.model.insertContent( createGlossary( writer, t, ck_desc ) );
+                    
+                    // Insert <glossaryTooltip>*</glossaryTooltip> at the current selection position
+                    // in a way that will result in creating a valid model structure.
+                    // this.editor.model.insertContent( createGlossary( writer, ck_term, ck_desc ) );
+                } );
+                
+          
+                $('.ckModal').modal('hide');
+            })
+           
+        }).modal();
     }
 
     refresh() {

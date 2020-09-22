@@ -24,6 +24,46 @@ export default class GlossaryUI extends Plugin {
                 tooltip: true
             } );
 
+            buttonView.on('execute', locale => {
+
+                // const selection = editor.model.document.selection;
+
+
+                // const range = selection.getFirstRange();
+
+                // let temp = '';
+
+                // for (const item of range.getItems()) {
+                //     temp = temp + item.data;
+                    
+                // }  
+                // // console.log(temp);
+
+                // let ck_term = temp;
+
+                // var ck_desc = '';
+                
+                // $('.ckModal').on('shown.bs.modal', function() {
+                    
+                //     $('input[name=ck_term]').val(temp); 
+
+                //     $('input[name=ck_desc]').on('keyup', function(){
+                        
+                //     });
+
+                //     $('.btn-ckeditor-glossary').on('click', function(){                       
+                //         ck_desc = $('input[name=ck_desc]').val();
+                //         console.log(ck_desc);
+                  
+                //         $('.ckModal').modal('hide');
+                //     })
+                   
+                // }).modal();               
+
+                
+                
+            });
+
          
             // Bind the state of the button to the command.
             buttonView.bind( 'isOn', 'isEnabled' ).to( command, 'value', 'isEnabled' );
