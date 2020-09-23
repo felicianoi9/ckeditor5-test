@@ -53,7 +53,7 @@ export default class UnTooltipCommand extends Command {
 
 		model.change( writer => {
 			// Get ranges to unlink.
-			const rangesToUnlink = selection.isCollapsed ?
+			const rangesToUnTooltip = selection.isCollapsed ?
 				[ findAttributeRange(
 					selection.getFirstPosition(),
 					'linkHref',
@@ -63,7 +63,7 @@ export default class UnTooltipCommand extends Command {
 				selection.getRanges();
 
 			// Remove `linkHref` attribute from specified ranges.
-			for ( const range of rangesToUnlink ) {
+			for ( const range of rangesToUnTooltip ) {
 				writer.removeAttribute( 'linkHref', range );
 				// If there are registered custom attributes, then remove them during unlink.
 				if ( tooltipCommand ) {

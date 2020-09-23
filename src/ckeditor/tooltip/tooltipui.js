@@ -11,8 +11,8 @@ import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/panel/balloon/contextu
 import clickOutsideHandler from '@ckeditor/ckeditor5-ui/src/bindings/clickoutsidehandler';
 
 import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
-import LinkFormView from './ui/linkformview';
-import LinkActionsView from './ui/linkactionsview';
+import TooltipFormView from './ui/tooltipformview';
+import TooltipActionsView from './ui/tooltipactionsview';
 
 import linkIcon from './theme/icons/link.svg';
 
@@ -54,14 +54,14 @@ export default class TooltipUI extends Plugin {
 		/**
 		 * The actions view displayed inside of the balloon.
 		 *
-		 * @member {module:link/ui/linkactionsview~LinkActionsView}
+		 * @member {module:link/ui/Tooltipactionsview~TooltipActionsView}
 		 */
 		this.actionsView = this._createActionsView();
 
 		/**
 		 * The form view displayed inside the balloon.
 		 *
-		 * @member {module:link/ui/linkformview~LinkFormView}
+		 * @member {module:link/ui/Tooltipformview~TooltipFormView}
 		 */
 		this.formView = this._createFormView();
 
@@ -74,7 +74,7 @@ export default class TooltipUI extends Plugin {
 		this._balloon = editor.plugins.get( ContextualBalloon );
 
 		// Create toolbar buttons.
-		this._createToolbarLinkButton();
+		this._createToolbarTooltipButton();
 
 		// Attach lifecycle actions to the the balloon.
 		this._enableUserBalloonInteractions();
@@ -108,14 +108,14 @@ export default class TooltipUI extends Plugin {
 	}
 
 	/**
-	 * Creates the {@link module:link/ui/linkactionsview~LinkActionsView} instance.
+	 * Creates the {@link module:link/ui/Tooltipactionsview~TooltipActionsView} instance.
 	 *
 	 * @private
-	 * @returns {module:link/ui/linkactionsview~LinkActionsView} The link actions view instance.
+	 * @returns {module:link/ui/Tooltipactionsview~TooltipActionsView} The link actions view instance.
 	 */
 	_createActionsView() {
 		const editor = this.editor;
-		const actionsView = new LinkActionsView( editor.locale );
+		const actionsView = new TooltipActionsView( editor.locale );
 		const tooltipCommand = editor.commands.get( 'tooltip' );
 		const untooltipCommand = editor.commands.get( 'untooltip' );
 
@@ -150,17 +150,17 @@ export default class TooltipUI extends Plugin {
 	}
 
 	/**
-	 * Creates the {@link module:link/ui/linkformview~LinkFormView} instance.
+	 * Creates the {@link module:link/ui/Tooltipformview~TooltipFormView} instance.
 	 *
 	 * @private
-	 * @returns {module:link/ui/linkformview~LinkFormView} The link form view instance.
+	 * @returns {module:link/ui/Tooltipformview~TooltipFormView} The link form view instance.
 	 */
 	_createFormView() {
 		const editor = this.editor;
 		const tooltipCommand = editor.commands.get( 'tooltip' );
 		const defaultProtocol = editor.config.get( 'tooltip.defaultProtocol' );
 
-		const formView = new LinkFormView( editor.locale, tooltipCommand, defaultProtocol );
+		const formView = new TooltipFormView( editor.locale, tooltipCommand, defaultProtocol );
 
 		formView.urlInputView.fieldView.bind( 'value' ).to( tooltipCommand, 'value' );
 
@@ -204,12 +204,12 @@ export default class TooltipUI extends Plugin {
 	 *
 	 * @private
 	 */
-	_createToolbarLinkButton() {
+	_createToolbarTooltipButton() {
 		const editor = this.editor;
 		const tooltipCommand = editor.commands.get( 'tooltip' );
 		const t = editor.t;
 
-		// Handle the `Ctrl+K` keystroke and show the panel.
+		// Handle the `Ctrl+M` keystroke and show the panel.
 		editor.keystrokes.set( TOOLTIP_KEYSTROKE, ( keyEvtData, cancel ) => {
 			// Prevent focusing the search bar in FF, Chrome and Edge. See https://github.com/ckeditor/ckeditor5/issues/4811.
 			cancel();

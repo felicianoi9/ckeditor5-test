@@ -37,7 +37,7 @@ export function isTooltipElement( node ) {
 export function createTooltipElement( href, { writer } ) {
 	// Priority 5 - https://github.com/ckeditor/ckeditor5-link/issues/121.
 	const tooltipElement = writer.createAttributeElement( 'a', { href }, { priority: 5 } );
-	writer.setCustomProperty( 'link', true, tooltipElement );
+	writer.setCustomProperty( 'tooltip', true, tooltipElement );
 
 	return tooltipElement;
 }
