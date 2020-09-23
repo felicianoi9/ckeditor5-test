@@ -21,6 +21,8 @@ import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
 
 import Glossary from './glossary/glossary';
 
+import Tooltip from './tooltip/tooltip';
+
 export default class ClassicEditor extends ClassicEditorBase {}
 
 // Plugins to include in the build.
@@ -42,7 +44,8 @@ ClassicEditor.builtinPlugins = [
     List,
     Paragraph,
     Alignment,
-    Glossary                                                           
+    Glossary,
+    Tooltip                                                           
 ];
 
 // Editor configuration.
@@ -61,7 +64,8 @@ ClassicEditor.defaultConfig = {
             'blockQuote',
             'undo',
             'redo',
-            'glossary'
+            'glossary',
+            'tooltip'
         ]
     },
     image: {
