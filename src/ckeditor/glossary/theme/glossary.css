@@ -1,0 +1,19 @@
+.tooltipCk {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltipCk.popover-element::after {
+    content: attr(tooltiptext);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: red;
+    width: 300px;
+    height: 300px;
+}
+
+.ck-editor__main, .ck-editor__editable_inline {
+    height: 1000px;
+}

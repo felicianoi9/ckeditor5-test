@@ -6,7 +6,7 @@ ClassicEditor
     .then( editor => {
         CKEditorInspector.attach( { 'editor': editor } );
         window.editor = editor;
-                
+        // editor.execute( 'insertGlossary' );
     })
     .catch( error => {
         console.error( error.stack );
