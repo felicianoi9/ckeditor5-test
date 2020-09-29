@@ -1,5 +1,5 @@
 import Command from '@ckeditor/ckeditor5-core/src/command';
-
+import findAttributeRange from '@ckeditor/ckeditor5-typing/src/utils/findattributerange';
 export default class InsertTooltip extends Command {
 
     constructor( editor, attributeKey ) {
@@ -68,7 +68,30 @@ export default class InsertTooltip extends Command {
 
                     writer.setSelection( writer.createPositionAfter( node ) );
 
-                    console.log(node.getPath());
+                    ['tooltip'].forEach( item => {
+                        writer.removeSelectionAttribute( item );
+                    } );
+
+                    // const rangesToUnlink = selection.focus.nodeAfter;
+                    // console.log(rangesToUnlink);
+
+                    // // const rangesToUnlink = selection.isCollapsed ?
+                    // //     [ findAttributeRange(
+                    // //         selection.getFirstPosition(),
+                    // //         self.attributeKey,
+                    // //         selection.getAttribute( self.attributeKey ),
+                    // //         self.editor.model
+                    // //     ) ] :
+                    // //     selection.getRanges();
+
+                    // // Remove `linkHref` attribute from specified ranges.
+                    // for ( const range of rangesToUnlink ) {
+                    //     writer.removeAttribute( self.attributeKey , range );
+                    //     // If there are registered custom attributes, then remove them during unlink.
+                       
+                    // }
+
+                    // console.log(node.getPath());
 
                     $('input[name=ck_term]').val('');
 

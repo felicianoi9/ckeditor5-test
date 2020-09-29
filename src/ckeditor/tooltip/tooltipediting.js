@@ -29,10 +29,10 @@ export default class TooltipEditing extends Plugin {
             allowAttributes: [ TOOLTIPTEXT ],
 		})        
 		
-		// schema.setAttributeProperties( TOOLTIPTEXT, {
-		// 	isFormatting: true,
-		// 	copyOnEnter: true,
-        // })
+		schema.setAttributeProperties( TOOLTIPTEXT, {
+			isFormatting: true,
+			copyOnEnter: true,
+        })
 	}    
 	
 	_defineConverters() {
@@ -40,10 +40,9 @@ export default class TooltipEditing extends Plugin {
 		
 		conversion.for( 'upcast' ).elementToAttribute ({
             view: {
-                name: 'div',
+                name: 'span',
                 attributes: {
 					title: true,
-					'data-placement': 'top',
 					'data-toggle': 'tooltip'
                 },
             },
@@ -71,9 +70,8 @@ export default class TooltipEditing extends Plugin {
 		})        
 		
 		function createTooltipElement ( title, { writer } ) {
-            const tooltipElement = writer.createAttributeElement( 'div', { title } );
+            const tooltipElement = writer.createAttributeElement( 'span', { title } );
             writer.setCustomProperty( TOOLTIPTEXT, true, tooltipElement );
-			writer.setAttribute( 'data-placement', 'top', tooltipElement ) ; 
 			writer.setAttribute( 'data-toogle', 'tooltip', tooltipElement ) ;          
 			return tooltipElement;
         }
@@ -81,19 +79,3 @@ export default class TooltipEditing extends Plugin {
 
     
 }
-
-// function createTooltipElement( title, { writer } ) {
-	
-// 	const tooltipElement = writer.createAttributeElement( 'div', {
-// 			title: title,
-// 			'data-placement': 'top',
-// 			'data-toggle': 'tooltip',
-		
-// 		},
-// 		{
-// 			children: true
-// 		}
-// 	);
-
-// 	return tooltipElement;
-// }
