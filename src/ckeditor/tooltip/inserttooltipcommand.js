@@ -1,5 +1,5 @@
 import Command from '@ckeditor/ckeditor5-core/src/command';
-import findAttributeRange from '@ckeditor/ckeditor5-typing/src/utils/findattributerange';
+
 export default class InsertTooltip extends Command {
 
     constructor( editor, attributeKey ) {
@@ -66,32 +66,34 @@ export default class InsertTooltip extends Command {
 
                     // Put the selection at the end of the inserted link.
 
-                    writer.setSelection( writer.createPositionAfter( node ) );
+                    // writer.setSelection( writer.createPositionAfter( node ) );
+
+                    // console.log(node)
+                    // let asd = [
+                    //     {
+                    //         nome: 'Thiago',
+                    //         sobrenome: 'Passamani'
+                    //     },
+                    //     {
+                    //         nome: 'Rogério',
+                    //         sobrenome: 'Feliciano'
+                    //     }
+                    // ];
+
+                    // console.table(asd);
+
+                    console.table(node);
+
+                    if (node.parent) {
+                        writer.setSelection( writer.createPositionAfter(node) );
+                        self.editor.editing.view.focus();
+                    }
 
                     ['tooltip'].forEach( item => {
                         writer.removeSelectionAttribute( item );
-                    } );
-
-                    // const rangesToUnlink = selection.focus.nodeAfter;
-                    // console.log(rangesToUnlink);
-
-                    // // const rangesToUnlink = selection.isCollapsed ?
-                    // //     [ findAttributeRange(
-                    // //         selection.getFirstPosition(),
-                    // //         self.attributeKey,
-                    // //         selection.getAttribute( self.attributeKey ),
-                    // //         self.editor.model
-                    // //     ) ] :
-                    // //     selection.getRanges();
-
-                    // // Remove `linkHref` attribute from specified ranges.
-                    // for ( const range of rangesToUnlink ) {
-                    //     writer.removeAttribute( self.attributeKey , range );
-                    //     // If there are registered custom attributes, then remove them during unlink.
-                       
-                    // }
-
-                    // console.log(node.getPath());
+                    } );  
+                    
+                    
 
                     $('input[name=ck_term]').val('');
 
