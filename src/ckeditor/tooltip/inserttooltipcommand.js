@@ -56,6 +56,8 @@ export default class InsertTooltip extends Command {
 
                     const node = writer.createText( ck_term, { [ self.attributeKey ]: ck_desc } );
 
+                    console.log(node);
+                    
                     self.editor.model.insertContent( node, selection.focus );
 
                     for ( const range of selection.getRanges() ) {
@@ -63,26 +65,7 @@ export default class InsertTooltip extends Command {
                         writer.remove(range);
 
                     }
-
-                    // Put the selection at the end of the inserted link.
-
-                    // writer.setSelection( writer.createPositionAfter( node ) );
-
-                    // console.log(node)
-                    // let asd = [
-                    //     {
-                    //         nome: 'Thiago',
-                    //         sobrenome: 'Passamani'
-                    //     },
-                    //     {
-                    //         nome: 'Rogério',
-                    //         sobrenome: 'Feliciano'
-                    //     }
-                    // ];
-
-                    // console.table(asd);
-
-                    console.table(node);
+                   
 
                     if (node.parent) {
                         writer.setSelection( writer.createPositionAfter(node) );
@@ -107,12 +90,5 @@ export default class InsertTooltip extends Command {
 
         }).modal();
     }
-
-    // refresh() {
-    //     const model = this.editor.model;
-    //     const selection = model.document.selection;
-    //     const allowedIn = model.schema.findAllowedParent( selection.getFirstPosition(), this.attributeKey );
-
-    //     this.isEnabled = allowedIn !== null;
-    // }    
+  
 }
