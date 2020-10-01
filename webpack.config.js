@@ -16,29 +16,7 @@ module.exports = {
 
     module: {
         rules: [
-            { 
-                test: /placeholder[/\\]theme[/\\].+\.css$/, 
-                use: [
-                    {
-                        loader: 'style-loader',
-                        options: {
-                            injectType: 'singletonStyleTag',
-                            attributes: {
-                                'data-cke': true
-                            }
-                        }
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: styles.getPostCssConfig( {
-                            themeImporter: {
-                                themePath: require.resolve( '@ckeditor/ckeditor5-theme-lark' )
-                            },
-                            minify: true
-                        } )
-                    }
-                ] 
-            },
+            
             {
                 test: /glossary[/\\]theme[/\\].+\.css$/, 
                 use: [
@@ -86,8 +64,14 @@ module.exports = {
                     }
                 ] 
             },
+            
             {
                 test: /tooltip[/\\]theme[/\\]icons[/\\][^/\\]+\.svg$/,
+
+                use: [ 'raw-loader' ]
+            },
+            {
+                test: /glossary[/\\]theme[/\\]icons[/\\][^/\\]+\.svg$/,
 
                 use: [ 'raw-loader' ]
             },
