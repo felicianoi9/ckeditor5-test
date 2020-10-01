@@ -4,6 +4,8 @@ import InsertTooltip from './inserttooltipcommand';
 
 import Widget from '@ckeditor/ckeditor5-widget/src/widget';
 
+import findAttributeRange from '@ckeditor/ckeditor5-typing/src/utils/findattributerange';
+
 const TOOLTIPTEXT = 'tooltip';
 
 export default class TooltipEditing extends Plugin {
@@ -17,9 +19,7 @@ export default class TooltipEditing extends Plugin {
 		this._defineSchema();
         this._defineConverters();
         this.editor.commands.add( 'insertTooltip', new InsertTooltip( this.editor, TOOLTIPTEXT ) );
-        console.log(this.editor);
         
-
 	}
 	
 	_defineSchema() {
@@ -76,6 +76,7 @@ export default class TooltipEditing extends Plugin {
 			return tooltipElement;
         }
     }
+    
 
     
 }

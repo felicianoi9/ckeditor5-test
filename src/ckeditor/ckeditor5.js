@@ -13,13 +13,12 @@ import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
 import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
 import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
 import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
-import Link from '@ckeditor/ckeditor5-link/src/link';
+// import Link from '@ckeditor/ckeditor5-link/src/link';
 import List from '@ckeditor/ckeditor5-list/src/list';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
-
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';  
-
 import Tooltip from './tooltip/tooltip';
+import Glossary from './glossary/glossary';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -38,11 +37,12 @@ ClassicEditor.builtinPlugins = [
     ImageStyle,
     ImageToolbar,
     ImageUpload,
-    Link,
+    
     List,
     Paragraph,
     Alignment,   
-    Tooltip                                                       
+    Tooltip,
+    Glossary                                                     
 ];
 
 // Editor configuration.
@@ -61,7 +61,8 @@ ClassicEditor.defaultConfig = {
             'blockQuote',
             'undo',
             'redo',           
-            'tooltip'
+            'tooltip',
+            'glossary'
         ]
     },
     image: {
