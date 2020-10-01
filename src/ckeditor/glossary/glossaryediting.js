@@ -1,12 +1,3 @@
-/**
- * @license Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
- */
-
-/**
- * @module link/linkediting
- */
-
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 import MouseObserver from '@ckeditor/ckeditor5-engine/src/view/observer/mouseobserver';
 import TwoStepCaretMovement from '@ckeditor/ckeditor5-typing/src/twostepcaretmovement';
@@ -18,7 +9,7 @@ import UnlinkCommand from './unlinkcommand';
 import ManualDecorator from './utils/manualdecorator';
 import findAttributeRange from '@ckeditor/ckeditor5-typing/src/utils/findattributerange';
 import { keyCodes } from '@ckeditor/ckeditor5-utils/src/keyboard';
-import { createLinkElement, ensureSafeUrl, getLocalizedDecorators, normalizeDecorators } from './utils';
+import { createTooltipElement, ensureSafeUrl, getLocalizedDecorators, normalizeDecorators } from './utils';
 
 import './theme/link.css';
 
@@ -63,11 +54,11 @@ export default class GlossaryEditing extends Plugin {
 		editor.model.schema.extend( '$text', { allowAttributes: 'tooltip' } );
 
 		editor.conversion.for( 'dataDowncast' )
-			.attributeToElement( { model: 'tooltip', view: createLinkElement } );
+			.attributeToElement( { model: 'tooltip', view: createTooltipElement } );
 
 		editor.conversion.for( 'editingDowncast' )
 			.attributeToElement( { model: 'tooltip', view: ( href, conversionApi ) => {
-				return createLinkElement( ensureSafeUrl( href ), conversionApi );
+				return createTooltipElement( ensureSafeUrl( href ), conversionApi );
 			} } );
 
 		editor.conversion.for( 'upcast' )

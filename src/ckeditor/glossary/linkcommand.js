@@ -165,15 +165,18 @@ export default class LinkCommand extends Command {
 
 		model.change( writer => {
 			// If selection is collapsed then update selected link or insert new one at the place of caret.
+			
 			if ( selection.isCollapsed ) {
 				const position = selection.getFirstPosition();
+
+
+				
 
 				// When selection is inside text with `tooltip` attribute.
 				if ( selection.hasAttribute( 'tooltip' ) ) {
 					// Then update `tooltip` value.
 					const linkRange = findAttributeRange( position, 'tooltip', selection.getAttribute( 'tooltip' ), model );
-					console.log(linkRange);
-
+					
 					writer.setAttribute( 'tooltip', title, linkRange );
 
 					truthyManualDecorators.forEach( item => {
@@ -213,6 +216,7 @@ export default class LinkCommand extends Command {
 					writer.removeSelectionAttribute( item );
 				} );
 			} else {
+				
 				// If selection has non-collapsed ranges, we change attribute on nodes inside those ranges
 				// omitting nodes where the `tooltip` attribute is disallowed.
 				const ranges = model.schema.getValidRanges( selection.getRanges(), 'tooltip' );

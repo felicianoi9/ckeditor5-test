@@ -34,9 +34,9 @@ export function isLinkElement( node ) {
  * @param {module:engine/conversion/downcastdispatcher~DowncastConversionApi} conversionApi
  * @returns {module:engine/view/attributeelement~AttributeElement}
  */
-export function createLinkElement( title, { writer } ) {
+export function createTooltipElement( title, { writer } ) {
 	// Priority 5 - https://github.com/ckeditor/ckeditor5-link/issues/121.
-	const linkElement = writer.createAttributeElement( 'a', { title } );
+	const linkElement = writer.createAttributeElement( 'span', { title } );
 	writer.setCustomProperty( 'link', true, linkElement );
 
 	return linkElement;

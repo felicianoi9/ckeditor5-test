@@ -291,6 +291,7 @@ export default class GlossaryUI extends Plugin {
 	 * @protected
 	 */
 	_addActionsView() {
+		debugger;
 		if ( this._areActionsInPanel ) {
 			return;
 		}
@@ -465,9 +466,13 @@ export default class GlossaryUI extends Plugin {
 		let prevSelectedLink = this._getSelectedLinkElement();
 		let prevSelectionParent = getSelectionParent();
 
+		
 		const update = () => {
 			const selectedLink = this._getSelectedLinkElement();
 			const selectionParent = getSelectionParent();
+
+			debugger;
+
 
 			// Hide the panel if:
 			//
